@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newversionflutter/DATA_CLASS.dart';
 
+import 'Img_picker.dart';
+
 class ChatPage extends StatefulWidget {
   String chatUsername;
 
@@ -139,6 +141,7 @@ class _ChatPageState extends State<ChatPage> {
         children: [
           Expanded(
             child: ListView.builder(
+              reverse: true,
               itemCount: _messages.length,
               itemBuilder: (BuildContext context, int index) {
                 return ListTile(
@@ -190,7 +193,16 @@ class _ChatPageState extends State<ChatPage> {
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.blue.shade400),
-                          child: const Icon(Icons.camera_alt, color: Colors.white,size: 22,),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ImagePickerExample()));
+                            },
+                            child: const Icon(
+                              Icons.camera_alt,
+                              color: Colors.white,
+                              size: 22,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -231,27 +243,35 @@ class _ChatPageState extends State<ChatPage> {
                     height: 40,
                     width: 40,
                     decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.grey.shade700),
-                    child: const Icon(Icons.mic, color: Colors.white,),
+                        shape: BoxShape.circle, color: Colors.grey.shade700),
+                    child: const Icon(
+                      Icons.mic,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
-              IconButton(
-                visualDensity: VisualDensity.compact,
-                icon: const Icon(
-                  Icons.send,
-                  size: 25,
-                  color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: GestureDetector(
+                  onTap: () {
+                    String message = _textEditingController.text;
+                    if (message.isEmpty) {
+                      return;
+                    } else {
+                      setState(() {
+                        _messages.add(message);
+                        _textEditingController.clear();
+                      });
+                    }
+                  },
+                  child: Icon(
+                    Icons.send,
+                    size: 25,
+                    color: Colors.white,
+                  ),
                 ),
-                onPressed: () {
-                  String message = _textEditingController.text;
-                  setState(() {
-                    _messages.add(message);
-                    _textEditingController.clear();
-                  });
-                },
-              ),
+              )
             ],
           ),
           const SizedBox(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newversionflutter/DATA_CLASS.dart';
+import 'package:newversionflutter/Img_picker.dart';
 import 'chat.dart';
 
 
@@ -54,11 +55,7 @@ class _MainPageState extends State<MainPage> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Fluttertoast.showToast(
-                    msg: "Camera",
-                    toastLength: Toast.LENGTH_SHORT,
-                    backgroundColor: Colors.red,
-                  );
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ImagePickerExample()));
                 },
                 child: Container(
                   height: 35,
@@ -227,71 +224,74 @@ class _MainPageState extends State<MainPage> {
             ///USER AND MESSAGES
             ...List.generate(NewDataTable.newData.length, (index) {
               var user =  NewDataTable.newData.elementAt(index);
-              return GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ChatPage(chatUsername: user['name'],)));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
-                  child: Row(
-                    children: [
-                      Stack(
-                        alignment: Alignment.bottomRight,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                            ),
-                            height: 60,
-                            width: 60,
-                            decoration: const BoxDecoration(
-                                color: Colors.grey,
-                                shape: BoxShape.circle),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
-                              child: const Image(
-                                image: AssetImage("Assets/img.png"),
-                                fit: BoxFit.cover,
+              return Padding(
+                padding: const EdgeInsets.all(8),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ChatPage(chatUsername: user['name'],)));
+                  },
+                  child: Container(
+                    color: Colors.transparent,
+                    child: Row(
+                      children: [
+                        Stack(
+                          alignment: Alignment.bottomRight,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                              ),
+                              height: 60,
+                              width: 60,
+                              decoration: const BoxDecoration(
+                                  color: Colors.grey,
+                                  shape: BoxShape.circle),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: const Image(
+                                  image: AssetImage("Assets/img.png"),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          Positioned(
-                            right: 5,
-                            bottom: 5,
-                            child: Container(
-                              height: 15,
-                              width: 15,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.green,
-                                  border:
-                                  Border.all(color: Colors.black)),
-                            ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(width: 10,),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(user["name"], style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.white.withOpacity(0.7)
-                          ),),
-                          const SizedBox(height: 5,),
-                           Row(
-                             children: [
-                               Text("say Hi 👋",
-                                 style: TextStyle(
-                                     color: Colors.white.withOpacity(0.7),
-                                     fontSize: 13,
-                                     overflow: TextOverflow.clip
-                                 ),),
-                             ],
-                           )
-                        ],
-                      ),
-                    ],
+                            Positioned(
+                              right: 5,
+                              bottom: 5,
+                              child: Container(
+                                height: 15,
+                                width: 15,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.green,
+                                    border:
+                                    Border.all(color: Colors.black)),
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(width: 10,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(user["name"], style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.white.withOpacity(0.7)
+                            ),),
+                            const SizedBox(height: 5,),
+                             Row(
+                               children: [
+                                 Text("say Hi 👋",
+                                   style: TextStyle(
+                                       color: Colors.white.withOpacity(0.7),
+                                       fontSize: 13,
+                                       overflow: TextOverflow.clip
+                                   ),),
+                               ],
+                             )
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
