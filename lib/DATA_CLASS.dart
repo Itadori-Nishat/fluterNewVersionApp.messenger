@@ -1,94 +1,3 @@
-// class ChatData{
-// static List users = [
-//   { "id": 0,
-//     "UserName": "Nishat Opi",
-//     "isActive": true,
-//     "phone": "251412514  564",
-//     "email": "Nishat@gmail.com",
-//     "text": "How are you Nishat? where are you?",
-//     "send": "10:12 pm",
-//     "seen": true
-//   },
-//
-//   {
-//       "id": 1,
-//       "UserName": "Sabit Nishat",
-//       "isActive": false,
-//       "phone": "450453040504530",
-//       "email": "Sabit@gmail.com",
-//       "text": "Whats up?",
-//       "send": "11:12 pm",
-//       "seen": false
-//     },
-//   {
-//     "id": 1,
-//     "UserName": "Zahed Sabit Nishat",
-//     "isActive": true,
-//     "phone": "450453040504530",
-//     "email": "zahed@gmail.com",
-//     "text": "hi?",
-//     "send": "12:12 pm",
-//     "seen": true
-//   },
-//   {
-//     "id": 1,
-//     "UserName": "Masud allen",
-//     "isActive": true,
-//     "phone": "450453040504530",
-//     "email": "Masud@gmail.com",
-//     "text": "Whats up?",
-//     "send": "11:12 pm",
-//     "seen": false
-//   },
-//   {
-//     "id": 1,
-//     "UserName": "Allen Masud",
-//     "isActive": false,
-//     "phone": "450453040504530",
-//     "email": "Allen@gmail.com",
-//     "text": "Whats up?",
-//     "send": "1:12 pm",
-//     "seen": true
-//   },
-//   {
-//     "id": 1,
-//     "UserName": "Opi cox",
-//     "isActive": true,
-//     "phone": "450453040504530",
-//     "email": "Opi@gmail.com",
-//     "text": "Whats up?",
-//     "send": "11:12 pm",
-//     "seen": true
-//   },
-//   {
-//     "id": 1,
-//     "UserName": "Sajida aunty",
-//     "isActive": false,
-//     "phone": "450453040504530",
-//     "email": "Sajida@gmail.com",
-//     "text": "Whats up?",
-//     "send": "11:12 pm",
-//     "seen": false
-//   },
-//   {
-//     "id": 1,
-//     "UserName": "Labiba sister",
-//     "isActive": true,
-//     "phone": "450453040504530",
-//     "email": "Labiba@gmail.com",
-//     "text": "Whats up?",
-//     "send": "11:12 pm",
-//     "seen": false
-//   }
-//
-//   ];
-// }
-
-
-
-
-
-
 class NewDataTable {
   static List newData = [
     {
@@ -99,7 +8,7 @@ class NewDataTable {
     {
       "id": 1,
       "name": "Kelley Velazquez",
-      "img_url": ""
+      "img_url": "https://www.google.com/search?q=image+cartoon&sxsrf=APwXEdcVkGz2L1FKhp5LEknKHX7OPKyMQA:1679739191970&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjVyeiO7Pb9AhUGT2wGHayYBxwQ_AUoAXoECAEQAw&biw=1623&bih=1179#imgrc=scnuL0404ZfxRM"
     },
     {
       "id": 2,
@@ -151,51 +60,7 @@ class NewDataTable {
       "name": "Gates Weaver",
       "img_url": ""
     },
-    {
-      "id": 12,
-      "name": "n i sh at",
-      "img_url": ""
-    },
-    {
-      "id": 13,
-      "name": "Vinson Lara",
-      "img_url": ""
-    },
-    {
-      "id": 14,
-      "name": "Hawkins Raymond",
-      "img_url": ""
-    },
-    {
-      "id": 15,
-      "name": "Robles Horton",
-      "img_url": ""
-    },
-    {
-      "id": 16,
-      "name": "Alana Sparks",
-      "img_url": ""
-    },
-    {
-      "id": 17,
-      "name": "Hopper Sosa",
-      "img_url": ""
-    },
-    {
-      "id": 18,
-      "name": "Walters Barker",
-      "img_url": ""
-    },
-    {
-      "id": 19,
-      "name": "Downs Drake",
-      "img_url": ""
-    },
-    {
-      "id": 20,
-      "name": "Nola Newman",
-      "img_url": ""
-    }
+    //
   ];
 }
 

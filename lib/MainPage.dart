@@ -174,10 +174,7 @@ class _MainPageState extends State<MainPage> {
                                         shape: BoxShape.circle),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(50),
-                                      child: const Image(
-                                        image: AssetImage("Assets/img.png"),
-                                        fit: BoxFit.cover,
-                                      ),
+                                      child: Image.asset("Assets/img" + (index + 1).toString() +".jpg"),
                                     ),
                                   ),
                                   Positioned(
@@ -248,9 +245,9 @@ class _MainPageState extends State<MainPage> {
                                   shape: BoxShape.circle),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50),
-                                child: const Image(
-                                  image: AssetImage("Assets/img.png"),
-                                  fit: BoxFit.cover,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(50),
+                                  child: Image.asset("Assets/img" + (index + 1).toString() +".jpg"),
                                 ),
                               ),
                             ),

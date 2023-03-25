@@ -61,10 +61,7 @@ class _ChatPageState extends State<ChatPage> {
                             color: Colors.grey, shape: BoxShape.circle),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(50),
-                          child: const Image(
-                            image: AssetImage("Assets/img.png"),
-                            fit: BoxFit.cover,
-                          ),
+                          child: Image.asset("Assets/img1.jpg"),
                         ),
                       ),
                       Positioned(
@@ -207,10 +204,10 @@ class _ChatPageState extends State<ChatPage> {
                       ),
                     ),
                     suffixIcon: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(11.0),
                       child: SvgPicture.asset(
-                        "Assets/smile.svg",
-                        height: 20,
+                        "Assets/smiley.svg",
+                        height: 18,
                         color: Colors.blue,
                       ),
                     ),
