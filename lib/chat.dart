@@ -6,7 +6,7 @@ import 'package:newversionflutter/DATA_CLASS.dart';
 import 'Img_picker.dart';
 
 class ChatPage extends StatefulWidget {
-  String chatUsername;
+  final String chatUsername;
 
   ChatPage({
     Key? key,
@@ -138,7 +138,9 @@ class _ChatPageState extends State<ChatPage> {
         children: [
           Expanded(
             child: ListView.builder(
+              controller: ScrollController(),
               reverse: true,
+              physics: ScrollPhysics(),
               itemCount: _messages.length,
               itemBuilder: (BuildContext context, int index) {
                 return ListTile(
@@ -215,11 +217,13 @@ class _ChatPageState extends State<ChatPage> {
                     hintText: "Message....",
                     filled: true,
                     fillColor: Colors.white,
+                    disabledBorder: OutlineInputBorder(),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide:
                             const BorderSide(color: Colors.transparent)),
-                    focusedBorder: const OutlineInputBorder(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(color: Colors.transparent)),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),

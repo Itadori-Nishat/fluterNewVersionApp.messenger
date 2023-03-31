@@ -164,18 +164,17 @@ class _MainPageState extends State<MainPage> {
                                 alignment: Alignment.bottomRight,
                                 children: [
                                   Container(
-                                    margin: const EdgeInsets.symmetric(
+                                    margin: EdgeInsets.symmetric(
                                       horizontal: 8,
                                     ),
                                     height: 60,
                                     width: 60,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        fit: BoxFit.contain,
+                                          image: NetworkImage(user['img'])),
                                         color: Colors.grey,
                                         shape: BoxShape.circle),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(50),
-                                      child: Image.asset("Assets/img" + (index + 1).toString() +".jpg"),
-                                    ),
                                   ),
                                   Positioned(
                                     right: 5,
@@ -187,7 +186,7 @@ class _MainPageState extends State<MainPage> {
                                           shape: BoxShape.circle,
                                           color: Colors.green,
                                           border:
-                                              Border.all(color: Colors.black)),
+                                              Border.all(color: Colors.black, width: 2)),
                                     ),
                                   )
                                 ],
@@ -245,10 +244,7 @@ class _MainPageState extends State<MainPage> {
                                   shape: BoxShape.circle),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(50),
-                                  child: Image.asset("Assets/img" + (index + 1).toString() +".jpg"),
-                                ),
+                                child: Image.asset("Assets/img" + (index + 1).toString() +".jpg"),
                               ),
                             ),
                             Positioned(
@@ -272,19 +268,13 @@ class _MainPageState extends State<MainPage> {
                           children: [
                             Text(user["name"], style: TextStyle(
                               fontSize: 17,
-                              color: Colors.white.withOpacity(0.7)
+                              color: Colors.white.withOpacity(0.6)
                             ),),
                             const SizedBox(height: 5,),
-                             Row(
-                               children: [
-                                 Text("say Hi 👋",
-                                   style: TextStyle(
-                                       color: Colors.white.withOpacity(0.7),
-                                       fontSize: 13,
-                                       overflow: TextOverflow.clip
-                                   ),),
-                               ],
-                             )
+                           Text("", style: TextStyle(
+                             fontSize: 15,
+                               color: Colors.white.withOpacity(0.6)
+                           ),)
                           ],
                         ),
                       ],
