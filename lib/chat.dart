@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:hive/hive.dart';
-import 'package:newversionflutter/DATA_CLASS.dart';
 import 'package:newversionflutter/delete%20func%20check.dart';
-
+import 'package:vibration/vibration.dart';
 import 'Img_picker.dart';
+import 'package:flutter/services.dart';
 
 class ChatPage extends StatefulWidget {
   final String chatUsername;
@@ -156,6 +155,7 @@ class _ChatPageState extends State<ChatPage> {
                                   BorderRadius.all(Radius.circular(100))),
                           child: GestureDetector(
                             onLongPress: () {
+                              Vibration.vibrate(duration: 5);
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -190,6 +190,7 @@ class _ChatPageState extends State<ChatPage> {
                                                   color: Colors.white),
                                             ),
                                             onPressed: () {
+                                              Vibration.vibrate(duration: 80);
                                               setState(() {
                                                 _messages.removeAt(index);
                                               });
