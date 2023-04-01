@@ -8,61 +8,52 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
-  List<String> _message = [    "Message 1",    "Message 2",    "Message 3",    "Message 4",    "Message 5",  ];
-  String reactmsg = "❤️";
+  List<String> items = List<String>.generate(100, (index) => 'Item $index');
+  List<String> filteredItems = [];
 
-
+  @override
+  void initState() {
+    filteredItems = items;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Delete Message on Tap Demo"),
-      ),
-      body: Column(
-        children: [
-          TextButton(
-              onPressed: (){
-                Vibration.vibrate(duration: 1000, );
-              },
-              child: Text("Tap to vibrate")),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _message.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(_message[index]),
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Delete Message"),
-                          content: Text("Are you sure you want to delete this message?"),
-                          actions: [
-                            TextButton(
-                              child: Text("Cancel"),
-                              onPressed: () => Navigator.of(context).pop(),
-                            ),
-                            TextButton(
-                              child: Text("Delete"),
-                              onPressed: () {
-                                setState(() {
-                                  _message.removeAt(index);
-                                });
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                );
-              },
+        appBar: AppBar(
+          title: Text('Search List Example'),
+        ),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                onChanged: (value) {
+                  // Filter the list of items as the user types
+                  setState(() {
+                    filteredItems = items
+                        .where((item) =>
+                        item.toLowerCase().contains(value.toLowerCase()))
+                        .toList();
+                  });
+                },
+                decoration: InputDecoration(
+                  labelText: 'Search',
+                  border: OutlineInputBorder(),
+                ),
+              ),
             ),
-          ),
-        ],
-      ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: filteredItems.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(filteredItems[index]),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
     );
   }
 }

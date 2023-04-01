@@ -172,7 +172,7 @@ class _MainPageState extends State<MainPage> {
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                         fit: BoxFit.contain,
-                                          image: NetworkImage(user['img'])),
+                                          image: AssetImage("Assets/img" + (index + 10).toString() +".jpg")),
                                         color: Colors.grey,
                                         shape: BoxShape.circle),
                                   ),
@@ -244,7 +244,7 @@ class _MainPageState extends State<MainPage> {
                                   shape: BoxShape.circle),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50),
-                                child: Image.asset("Assets/img" + (index + 1).toString() +".jpg"),
+                                child: Image.asset("Assets/img" + (index + 10).toString() +".jpg"),
                               ),
                             ),
                             Positioned(
