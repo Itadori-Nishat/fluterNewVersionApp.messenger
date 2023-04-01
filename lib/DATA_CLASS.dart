@@ -1,5 +1,6 @@
 class NewDataTable {
   static List newData = [
+
     {
       "id": 0,
       "name": "Fannie Russell",

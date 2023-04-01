@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:hive/hive.dart';
 import 'package:newversionflutter/DATA_CLASS.dart';
+import 'package:newversionflutter/delete%20func%20check.dart';
 
 import 'Img_picker.dart';
 
@@ -19,7 +21,7 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final TextEditingController _textEditingController = TextEditingController();
 
-  final List<String> _messages = [];
+  List<String> _messages = [];
 
   @override
   Widget build(BuildContext context) {
@@ -115,11 +117,8 @@ class _ChatPageState extends State<ChatPage> {
               icon: const Icon(Icons.call)),
           IconButton(
               onPressed: () {
-                Fluttertoast.showToast(
-                  msg: "Video Call",
-                  toastLength: Toast.LENGTH_SHORT,
-                  backgroundColor: Colors.red,
-                );
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyPage()));
               },
               icon: const Icon(Icons.video_call)),
           IconButton(
@@ -155,10 +154,60 @@ class _ChatPageState extends State<ChatPage> {
                               color: Colors.grey,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(100))),
-                          child: Text(
-                            _messages[index],
-                            textAlign: TextAlign.justify,
-                            style: const TextStyle(color: Colors.white),
+                          child: GestureDetector(
+                            onLongPress: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    backgroundColor: Colors.grey,
+                                    // title: Text("Delete Message", style: TextStyle(
+                                    //   color: Colors.white
+                                    // ),),
+                                    title: Text(
+                                      "Are you sure you want to delete this message?",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18),
+                                    ),
+                                    actions: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          TextButton(
+                                            child: Text(
+                                              "Cancel",
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            onPressed: () =>
+                                                Navigator.of(context).pop(),
+                                          ),
+                                          TextButton(
+                                            child: Text(
+                                              "Yes",
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            onPressed: () {
+                                              setState(() {
+                                                _messages.removeAt(index);
+                                              });
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            child: Text(
+                              _messages[index],
+                              textAlign: TextAlign.justify,
+                              style: const TextStyle(color: Colors.white),
+                            ),
                           )),
                     ],
                   ),
@@ -194,7 +243,11 @@ class _ChatPageState extends State<ChatPage> {
                               color: Colors.blue.shade400),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ImagePickerExample()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ImagePickerExample()));
                             },
                             child: const Icon(
                               Icons.camera_alt,
@@ -223,7 +276,7 @@ class _ChatPageState extends State<ChatPage> {
                         borderSide:
                             const BorderSide(color: Colors.transparent)),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(color: Colors.transparent)),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
@@ -266,10 +319,13 @@ class _ChatPageState extends State<ChatPage> {
                       });
                     }
                   },
-                  child: Icon(
-                    Icons.send,
-                    size: 25,
-                    color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: Icon(
+                      Icons.send,
+                      size: 25,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               )
